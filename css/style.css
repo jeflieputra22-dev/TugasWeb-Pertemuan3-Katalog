@@ -1,0 +1,260 @@
+/* =========================================================
+   KATALOG PRODUK RESPONSIF - style.css
+   Pendekatan: MOBILE-FIRST
+   Breakpoint dipakai (mengikuti grid Bootstrap 4):
+     - Default  : < 576px   (HP kecil)
+     - sm  576px  : HP besar / phablet -> grid 2 kolom
+     - md  768px  : Tablet
+     - lg  992px  : Laptop  -> grid 3 kolom, navbar full (hamburger hilang)
+     - xl  1200px : Desktop -> grid 4 kolom
+   ========================================================= */
+
+:root{
+  --coffee-dark:#1f140f;
+  --coffee-brown:#6f4e37;
+  --coffee-accent:#c88b3e;
+  --coffee-cream:#fdf6ec;
+  --coffee-text:#3a2a20;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  font-family:'Segoe UI', Roboto, Arial, sans-serif;
+  color:var(--coffee-text);
+  background:var(--coffee-cream);
+  /* clamp() untuk base font-size agar scaling halus di semua layar */
+  font-size:clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+  line-height:1.6;
+}
+
+img{ max-width:100%; height:auto; display:block; } /* responsive images default */
+
+a{ text-decoration:none; }
+
+/* ================= NAVBAR ================= */
+.main-nav{
+  background:var(--coffee-dark);
+  padding:.6rem 0;
+}
+.navbar-brand{
+  font-weight:700;
+  color:var(--coffee-cream) !important;
+  font-size:clamp(1.1rem, 1rem + 0.6vw, 1.5rem);
+}
+.navbar-brand span{ color:var(--coffee-accent); }
+.navbar-nav .nav-link{
+  color:#e8dfd6 !important;
+  font-weight:500;
+  padding:.5rem 1rem !important;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .active .nav-link{
+  color:var(--coffee-accent) !important;
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:60vh;
+  background:linear-gradient(rgba(20,12,8,.75), rgba(20,12,8,.75)), url('../img/Banner.JPG') center/cover no-repeat;
+  color:#fff;
+  padding:3rem 0;
+}
+.hero-title{
+  /* clamp(min, preferred, max) -> typography scaling mobile-first */
+  font-size:clamp(1.8rem, 1.3rem + 3vw, 3.4rem);
+  font-weight:800;
+  line-height:1.2;
+  margin-bottom:1rem;
+}
+.hero-title span{ color:var(--coffee-accent); }
+.hero-sub{
+  font-size:clamp(0.95rem, 0.9rem + 0.4vw, 1.2rem);
+  color:#e8dfd6;
+  margin-bottom:1.5rem;
+}
+.btn-order{
+  background:var(--coffee-accent);
+  color:#1f140f;
+  font-weight:700;
+  padding:.7rem 1.6rem;
+  border-radius:30px;
+  transition:.25s;
+}
+.btn-order:hover{ background:#fff; color:var(--coffee-dark); }
+
+/* ================= CATALOG SECTION ================= */
+.catalog-section{ padding:clamp(2.5rem, 2rem + 2vw, 5rem) 0; }
+
+.section-heading{ margin-bottom:2rem; }
+.section-heading .pretitle{
+  color:var(--coffee-accent);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.8rem;
+  font-weight:700;
+}
+.section-heading h2{
+  font-size:clamp(1.6rem, 1.3rem + 1.6vw, 2.6rem);
+  font-weight:800;
+  color:var(--coffee-dark);
+  margin:.4rem 0;
+}
+.section-heading h2 span{ color:var(--coffee-brown); }
+
+/* Filter buttons */
+.filter-bar{ margin-bottom:2rem; }
+.btn-filter{
+  border:2px solid var(--coffee-brown);
+  background:transparent;
+  color:var(--coffee-brown);
+  padding:.4rem 1.2rem;
+  border-radius:30px;
+  margin:.25rem;
+  font-weight:600;
+  font-size:.9rem;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn-filter:hover,
+.btn-filter.active{
+  background:var(--coffee-brown);
+  color:#fff;
+}
+
+/* ================= PRODUCT CARD ================= */
+.product-card{
+  border:none;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+  transition:transform .25s, box-shadow .25s;
+  background:#fff;
+}
+.product-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 24px rgba(0,0,0,.15);
+}
+
+.img-wrap{ position:relative; overflow:hidden; aspect-ratio:4/3; }
+.img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;      /* gambar responsif, tidak gepeng di ukuran layar manapun */
+  transition:transform .4s;
+}
+.product-card:hover .img-wrap img{ transform:scale(1.08); }
+
+.badge-stock{
+  position:absolute;
+  top:10px; left:10px;
+  background:var(--coffee-accent);
+  color:#1f140f;
+  font-size:.7rem;
+  font-weight:700;
+  padding:.25rem .6rem;
+  border-radius:20px;
+}
+
+.product-title{
+  font-size:clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
+  font-weight:700;
+  color:var(--coffee-dark);
+  margin-bottom:.4rem;
+}
+.product-desc{
+  font-size:clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);
+  color:#6b5c52;
+  margin-bottom:1rem;
+}
+.price-row{ margin-bottom:.75rem; }
+.price{
+  font-size:clamp(1.05rem, 1rem + 0.3vw, 1.3rem);
+  font-weight:800;
+  color:var(--coffee-brown);
+}
+.unit{ font-size:.8rem; color:#9a8c81; margin-left:.25rem; }
+
+.btn-add{
+  background:var(--coffee-dark);
+  color:#fff;
+  font-weight:600;
+  font-size:.9rem;
+  padding:.55rem .5rem;
+  border-radius:8px;
+  border:none;
+  transition:.2s;
+}
+.btn-add:hover{ background:var(--coffee-accent); color:#1f140f; }
+
+/* ================= ABOUT ================= */
+.about-section{ padding:clamp(2.5rem, 2rem + 2vw, 5rem) 0; background:#fff; }
+.about-img{ box-shadow:0 8px 20px rgba(0,0,0,.12); }
+.about-section h2{
+  font-size:clamp(1.5rem, 1.2rem + 1.4vw, 2.3rem);
+  font-weight:800;
+  color:var(--coffee-dark);
+  margin-bottom:1rem;
+}
+.about-section h2 span{ color:var(--coffee-brown); }
+.list-check{ list-style:none; padding:0; margin-top:1rem; }
+.list-check li{ margin-bottom:.6rem; color:var(--coffee-text); }
+.list-check i{ color:var(--coffee-accent); margin-right:.5rem; }
+
+/* ================= FOOTER ================= */
+.site-footer{
+  background:var(--coffee-dark);
+  color:#cdbfb3;
+  padding:3rem 0 1.5rem;
+  font-size:clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+}
+.site-footer h4, .site-footer h5{ color:#fff; margin-bottom:1rem; }
+.site-footer h4 i{ color:var(--coffee-accent); }
+.footer-links{ list-style:none; padding:0; }
+.footer-links li{ margin-bottom:.5rem; }
+.footer-links a{ color:#cdbfb3; }
+.footer-links a:hover{ color:var(--coffee-accent); }
+.social-icons a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:38px; height:38px;
+  border:1px solid #4a3a30;
+  border-radius:50%;
+  color:#cdbfb3;
+  margin-right:.5rem;
+  transition:.2s;
+}
+.social-icons a:hover{ background:var(--coffee-accent); color:#1f140f; border-color:var(--coffee-accent); }
+.site-footer hr{ border-color:#4a3a30; margin:2rem 0 1rem; }
+.copyright{ color:#9a8c81; font-size:.85rem; }
+
+/* =========================================================
+   MEDIA QUERIES TAMBAHAN (progressive enhancement, mobile-first)
+   Catatan: grid kolom produk sendiri sudah diatur lewat class
+   Bootstrap col-12 / col-sm-6 / col-lg-4 / col-xl-3 di HTML,
+   berikut penyesuaian spacing & layout tambahan per breakpoint.
+   ========================================================= */
+
+/* Breakpoint 1: >= 576px (phablet) */
+@media (min-width:576px){
+  .hero{ min-height:55vh; }
+  .filter-bar{ margin-bottom:2.2rem; }
+}
+
+/* Breakpoint 2: >= 768px (tablet) */
+@media (min-width:768px){
+  .hero{ min-height:65vh; text-align:left; }
+  .product-desc{ min-height:44px; }
+}
+
+/* Breakpoint 3: >= 992px (laptop/desktop) - navbar hamburger otomatis hilang via navbar-expand-lg */
+@media (min-width:992px){
+  .catalog-section{ padding-top:5rem; }
+  .product-card:hover{ transform:translateY(-8px); }
+}
+
+/* Breakpoint 4: >= 1200px (large desktop) */
+@media (min-width:1200px){
+  .container{ max-width:1140px; }
+}
