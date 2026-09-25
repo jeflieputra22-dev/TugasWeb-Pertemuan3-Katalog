@@ -56,7 +56,7 @@ a{ text-decoration:none; }
 /* ================= HERO ================= */
 .hero{
   min-height:60vh;
-  background:linear-gradient(rgba(20,12,8,.75), rgba(20,12,8,.75)), url('../img/10.JPG') center/cover no-repeat;
+  background:linear-gradient(rgba(20,12,8,.75), rgba(20,12,8,.75)), url('../img/10.jpg') center/cover no-repeat;
   color:#fff;
   padding:3rem 0;
 }
